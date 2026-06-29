@@ -1,0 +1,38 @@
+:root { 
+    --glass: rgba(255, 255, 255, 0.12); 
+    --glass-border: rgba(255, 255, 255, 0.2); 
+    --text-primary: #ffffff;
+    --accent: #fbbf24; 
+}
+.night-mode { 
+    --glass: rgba(15, 23, 42, 0.9); 
+    --glass-border: rgba(255, 255, 255, 0.1); 
+    --accent: #818cf8;
+}
+
+body { font-family: 'Plus Jakarta Sans', sans-serif; transition: background 1.5s ease; color: var(--text-primary); margin: 0; overflow-x: hidden; }
+.glass { background: var(--glass); backdrop-filter: blur(30px); border: 1px solid var(--glass-border); border-radius: 2rem; transition: all 0.4s ease; }
+.glass:hover { border-color: rgba(255,255,255,0.4); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+
+/* Dynamic Season Backgrounds */
+body.bg-monsoon { background: linear-gradient(135deg, #075985 0%, #0c4a6e 100%); }
+body.bg-post { background: linear-gradient(135deg, #134e4a 0%, #1e293b 100%); }
+body.bg-winter { background: linear-gradient(135deg, #1e1b4b 0%, #020617 100%); }
+body.bg-summer { background: linear-gradient(135deg, #7f1d1d 0%, #f97316 100%); }
+body.bg-night { background: linear-gradient(135deg, #020617 0%, #0f172a 100%) !important; }
+
+@keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+.reveal { animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; opacity: 0; }
+
+/* CSS Rain Particle Engine */
+.rain-container { position: fixed; inset: 0; pointer-events: none; z-index: 1; display: none; }
+.is-raining .rain-container { display: block; }
+.drop { position: absolute; background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.5)); width: 1px; height: 100px; top: -120px; animation: fall 0.7s linear infinite; }
+@keyframes fall { to { transform: translateY(115vh); } }
+
+.progress-fill { width: 0; transition: width 1.5s cubic-bezier(0.1, 0.5, 0.1, 1); }
+.sun-arc-path { transition: stroke-dashoffset 2s ease; }
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+
+#toast { transform: translateX(180%); transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+#toast.show { transform: translateX(0); }
